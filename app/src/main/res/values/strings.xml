@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">我的手机影音</string>
+    <string name="splash_label">好音乐,好生活</string>
+    <string name="title_video">视频</string>
+    <string name="title_music">音乐</string>
+
+    <string name="title_activity_video_play">VideoPlayActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="loading_hint">正在努力加载。。。</string>
+</resources>

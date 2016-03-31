@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1F444E</color>
+    <color name="colorPrimaryDark">#213142</color>
+    <color name="colorAccent">#31C27C</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="lv_bg">#99B9AA8B</color>
+    <color name="trans_white">#88FFFFFF</color>
+    <color name="trans_white_light">#33FFFFFF</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>
