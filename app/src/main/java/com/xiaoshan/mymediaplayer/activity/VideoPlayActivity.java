@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
@@ -20,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.apkfuns.logutils.LogUtils;
 import com.xiaoshan.mymediaplayer.R;
@@ -34,6 +32,9 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import io.vov.vitamio.MediaPlayer;
+import io.vov.vitamio.Vitamio;
+import io.vov.vitamio.widget.VideoView;
 
 
 public class VideoPlayActivity extends BaseActivity {
@@ -127,6 +128,7 @@ public class VideoPlayActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        Vitamio.isInitialized(getApplicationContext());
         ButterKnife.inject(this);
         init();
 
@@ -171,7 +173,7 @@ public class VideoPlayActivity extends BaseActivity {
                 mDefaultHeight = layoutParams.height;
                 setVideoTitle();
                 refreshBtnPlayBg();
-                final int duration = mVvPlayer.getDuration();
+                final int duration = (int) mVvPlayer.getDuration();
                 mSbVideo.setMax(duration);
                 mTvDuration.setText(StringUtils.formatMillis(duration));
                 updateCurrentPosition();
@@ -457,7 +459,7 @@ public class VideoPlayActivity extends BaseActivity {
     }
 
     private void updateCurrentPosition() {
-        int currentPosition = mVvPlayer.getCurrentPosition();
+        int currentPosition = (int) mVvPlayer.getCurrentPosition();
         CharSequence charSequence = StringUtils.formatMillis(currentPosition);
         mTvCurrentPosition.setText(charSequence);
         mSbVideo.setProgress(currentPosition);

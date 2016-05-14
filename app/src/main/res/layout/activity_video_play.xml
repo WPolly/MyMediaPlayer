@@ -9,7 +9,7 @@
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. 注意:RelativeLayout与 FrameLayout 还是有许多不同的,此处根布局若用FrameLayout
          则无法正常切换全屏,是因为FrameLayout不会去测量子控件,完全由子控件自行测量?? -->
-    <VideoView
+    <io.vov.vitamio.widget.VideoView
         android:id="@+id/vv_player"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
