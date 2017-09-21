@@ -22,7 +22,7 @@ import com.xiaoshan.mymediaplayer.R;
 import com.xiaoshan.mymediaplayer.bean.AudioItemInfo;
 import com.xiaoshan.mymediaplayer.service.AudioPlayService;
 import com.xiaoshan.mymediaplayer.utils.StringUtils;
-import com.xiaoshan.mymediaplayer.view.LyricsView;
+import com.xiaoshan.mymediaplayer.view.LyricView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -40,8 +40,10 @@ public class AudioPlayActivity extends BaseActivity {
     ImageView mIvVision;
     @InjectView(R.id.tv_artist)
     TextView mTvArtist;
-    @InjectView(R.id.custom_lyrics_view)
-    LyricsView mCustomLyricsView;
+//    @InjectView(R.id.custom_lyrics_view)
+//    LyricsView mCustomLyricsView;
+    @InjectView(R.id.custom_lyric_view)
+    LyricView mCustomLyricView;
     @InjectView(R.id.tv_play_time)
     TextView mTvPlayTime;
     @InjectView(R.id.sb_audio)
@@ -56,6 +58,11 @@ public class AudioPlayActivity extends BaseActivity {
     Button mBtnNext;
 
     private ServiceConnection mConn;
+
+    public AudioPlayService getAudioPlayService() {
+        return mAudioPlayService;
+    }
+
     private AudioPlayService mAudioPlayService;
     private Messenger mUIMessenger;
 
@@ -175,7 +182,7 @@ public class AudioPlayActivity extends BaseActivity {
     }
 
     public void updateUI(AudioItemInfo audioItemInfo) {
-        mCustomLyricsView.setAudioPath(audioItemInfo.path);
+        mCustomLyricView.setAudioPath(audioItemInfo.path);
         updatePlayBtnState();
         mAudioPlayToolbar.setTitle(audioItemInfo.title);
         mTvArtist.setText(audioItemInfo.artist);
@@ -209,7 +216,7 @@ public class AudioPlayActivity extends BaseActivity {
         CharSequence currentPosition = StringUtils.formatMillis(currentPlayingPosition);
         mSbAudio.setProgress(currentPlayingPosition);
         mTvPlayTime.setText(currentPosition + "/" + duration);
-        mCustomLyricsView.setCurrentTime(currentPlayingPosition);
+        mCustomLyricView.setCurrentTime(currentPlayingPosition);
         mHandler.sendEmptyMessageDelayed(UPDATE_PLAY_TIME, 30);
     }
 
